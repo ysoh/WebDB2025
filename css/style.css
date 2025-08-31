@@ -28,6 +28,18 @@ header h1 {
     background-color: #4a258a;
     padding: 0.8rem 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* 햄버거 메뉴 위치 지정을 위해 추가 */
+    display: flex;
+    /* 자식 요소들을 가로로 정렬 */
+    justify-content: center;
+    /* 기본적으로 가운데 정렬 */
+    align-items: center;
+}
+
+.nav-links-wrapper {
+    width: 100%;
+    text-align: center;
 }
 
 .nav-links {
@@ -76,7 +88,7 @@ header h1 {
 
 .music-card:hover {
     transform: translateY(-5px);
-    box-shadow: 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
@@ -256,12 +268,10 @@ a {
 }
 
 .custom-file-input {
-    /* 실제 파일 입력 필드를 숨깁니다. */
     display: none;
 }
 
 .custom-file-label {
-    /* 파일 선택 버튼 역할을 하는 레이블 스타일 */
     background-color: #5a2e9b;
     color: white;
     padding: 0.8rem 1.2rem;
@@ -278,11 +288,112 @@ a {
 }
 
 .file-name {
-    /* 선택된 파일 이름을 표시하는 영역 스타일 */
     flex-grow: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #888;
     font-size: 0.9rem;
+}
+
+/* 햄버거 메뉴 스타일 */
+.hamburger-menu {
+    display: none;
+    /* 기본적으로 숨김 */
+    cursor: pointer;
+    padding: 0.5rem;
+    position: absolute;
+    /* 절대 위치로 배치 */
+    left: 1rem;
+    /* 왼쪽에 배치 */
+    z-index: 1000;
+    /* 다른 요소 위로 */
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* 모바일 화면 (768px 이하) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        /* 세로 정렬 */
+        align-items: flex-start;
+        /* 왼쪽 정렬 */
+        padding: 0.8rem 1rem;
+    }
+
+    .hamburger-menu {
+        display: block;
+        /* 모바일에서 햄버거 메뉴 보이기 */
+        position: relative;
+        /* relative로 변경하여 부모 기준 배치 */
+        left: 0;
+        margin-bottom: 1rem;
+        /* 메뉴 아이콘 아래 여백 */
+    }
+
+    .nav-links-wrapper {
+        width: 100%;
+        max-height: 0;
+        /* 메뉴 숨기기 */
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+        background-color: #4a258a;
+        /* 배경색 유지 */
+    }
+
+    .nav-links-wrapper.active {
+        max-height: 250px;
+        /* 메뉴 펼치기 (내용에 따라 조절) */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        /* 세로로 쌓이도록 */
+        gap: 0;
+        /* 링크 사이 간격 제거 */
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* 구분선 */
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links li a {
+        padding: 1rem 1.5rem;
+        /* 터치 영역 확대 */
+        display: block;
+        /* 전체 영역 클릭 가능하게 */
+    }
+
+    .nav-links li a:hover {
+        background-color: #6a3ab2;
+    }
+
+    .music-list {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        /* 모바일에서 카드 크기 조정 */
+    }
+
+    .music-card {
+        margin-bottom: 1rem;
+    }
+
+    .page-link {
+        display: block;
+        padding: 0.3rem 0.5rem;
+    }
 }
