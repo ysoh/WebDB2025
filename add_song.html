@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>곡 추가</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>곡 추가</h1>
+    </header>
+
+    <nav class="navbar">
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-links-wrapper">
+            <ul class="nav-links">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="login.html">로그인</a></li>
+                <li><a href="join.html">회원가입</a></li>
+                <li><a href="add_song.html">곡 추가</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="login-form-container">
+        <h2>새로운 곡 정보 입력</h2>
+        <form action="add_song_process.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="song_title">곡 제목</label>
+                <input type="text" id="song_title" name="song_title" required>
+            </div>
+            <div class="form-group">
+                <label for="artist">뮤지션</label>
+                <input type="text" id="artist" name="artist" required>
+            </div>
+            <div class="form-group">
+                <label for="youtube_link">유튜브 링크</label>
+                <input type="url" id="youtube_link" name="youtube_link"
+                    placeholder="예: https://www.youtube.com/watch?v=xxxxxx" required>
+            </div>
+            <div class="form-group">
+                <label for="song_image">앨범 이미지</label>
+                <input type="file" id="song_image" name="song_image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="lyrics_excerpt">가사 일부 (50자)</label>
+                <textarea id="lyrics_excerpt" name="lyrics_excerpt" rows="4" maxlength="50"></textarea>
+            </div>
+            <button type="submit" class="btn-login">곡 추가</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
